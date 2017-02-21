@@ -390,11 +390,7 @@ func (ctx *ValidationContext) verifyCertificate(el *etree.Element) (*x509.Certif
 }
 
 func (ctx *ValidationContext) Validate(el *etree.Element) (*etree.Element, error) {
-	cert, err := ctx.verifyCertificate(el)
-
-	if err != nil {
-		return nil, err
-	}
+	cert, _ := ctx.verifyCertificate(el)
 
 	return ctx.validateSignature(el, cert)
 }
